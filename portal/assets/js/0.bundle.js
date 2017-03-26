@@ -1,22 +1,24 @@
-webpackJsonp([0],[
-/* 0 */,
-/* 1 */,
-/* 2 */
+webpackJsonp([0],{
+
+/***/ 7:
 /***/ (function(module, exports) {
 
 console.log('***** I AM c *****');
 
 /***/ }),
-/* 3 */
+
+/***/ 8:
 /***/ (function(module, exports) {
 
 console.log('***** I AM d *****');
 
 /***/ }),
-/* 4 */
+
+/***/ 9:
 /***/ (function(module, exports) {
 
 console.log('***** I AM e *****');
 
 /***/ })
-]);
+
+});
