@@ -10,18 +10,32 @@
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^0.27.3",
+    "eslint": "^3.18.0",
     "exports-loader": "^0.6.4",
+    "express": "^4.15.2",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-header": "^1.8.8",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.1.2",
+    "http-proxy": "^1.16.2",
     "less": "^2.7.2",
     "less-loader": "^4.0.2",
     "less-plugin-autoprefix": "^1.5.1",
+    "run-sequence": "^1.2.2",
     "style-loader": "^0.16.0",
     "url-loader": "^0.5.8",
     "webpack": "^2.3.2"
   },
   "dependencies": {
     "jquery": "^1.12.4",
-    "lodash": "^4.17.4"
+    "lodash": "^3.10.1"
   }
 }

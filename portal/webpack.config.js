@@ -38,16 +38,16 @@ module.exports = {
 
         // 按需加载模块的文件路径
         // 如：https://cdn.example.com/assets/
-        publicPath: '/assets/',
+        publicPath: '/',
 
         // 入口模块命名
-        filename: 'js/[name].bundle.js',
+        filename: 'js/[name].js',
 
         // 分片模块（非入口模块）命名
         // 其中，chunkName由require.ensure()的第三个参数指定
         // require.ensure(dependencies: String[], callback: function(require), chunkName: String)
         // 若未指定第三个参数，则默认的chunkName为模块id（自动生成）
-        chunkFilename: 'js/[name].bundle.js'
+        chunkFilename: 'js/[name].chunk.js'
     },
 
     // 观察模式
@@ -79,8 +79,7 @@ module.exports = {
                     // 通过JS创建style节点，并将其插入<head>中
                     fallback: 'style-loader',
 
-                    use: [
-                        {
+                    use: [{
                             // 解析CSS样式表，将其中的@import和url()当作require来处理
                             loader: 'css-loader'
                         },
@@ -107,15 +106,13 @@ module.exports = {
             // 若图片大小小于等于25kb，则直接转换为base64格式，以减少请求数量
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                            name: 'img/[name]-[hash].[ext]',
-                            limit: 25000 // 单位：Byte，这里25000b===25kb
-                        }
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        name: 'img/[name]-[hash].[ext]',
+                        limit: 25000 // 单位：Byte，这里25000b===25kb
                     }
-                ]
+                }]
             }
 
             // // 将某些不支持模块化规范的模块所声明的全局变量作为模块内容导出
@@ -152,7 +149,7 @@ module.exports = {
         // 当新页面加载时，该公共分片将直接从缓存中提取，而不需要重新加载
         new webpack.optimize.CommonsChunkPlugin({
             // 公共分片名
-            name: 'common',
+            name: 'common.chunk',
 
             // 需要提取公共模块的入口模块
             chunks: [

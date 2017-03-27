@@ -1,1 +1,8 @@
 node_modules
+.vscode
+ 
+#开发用静态资源
+assets
+
+#发布目录
+dist
