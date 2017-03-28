@@ -26,8 +26,8 @@ proxy.on('error', function (e) {
 // });
 
 // 静态资源服务
-// app.use('/', express.static(path.join(__dirname, 'assets'))); // 开发资源
-app.use('/', express.static(path.join(__dirname, 'dist'))); // 发布资源
+app.use('/', express.static(path.join(__dirname, 'assets'))); // 开发资源
+// app.use('/', express.static(path.join(__dirname, 'dist'))); // 发布资源
 
 /**
  * 路由配置

@@ -102,6 +102,7 @@ module.exports = {
                     // publicPath: '/' // 针对该loader覆盖output中的publicPath
                 })
             },
+
             // 将LESS中的url进行处理
             // 若图片大小小于等于25kb，则直接转换为base64格式，以减少请求数量
             {
@@ -112,6 +113,14 @@ module.exports = {
                         name: 'img/[name]-[hash].[ext]',
                         limit: 25000 // 单位：Byte，这里25000b===25kb
                     }
+                }]
+            },
+
+            // pug模板
+            {
+                test: /\.pug$/,
+                use: [{
+                    loader: 'pug-loader'
                 }]
             }
 
@@ -124,6 +133,15 @@ module.exports = {
             //     }]
             // }
         ]
+    },
+
+    resolve: {
+        alias: {
+            js: path.resolve(__dirname, 'src/js'),
+            less: path.resolve(__dirname, 'src/less'),
+            views: path.resolve(__dirname, 'src/views'),
+            components: path.resolve(__dirname, 'src/components')
+        }
     },
 
     // 插件
@@ -162,7 +180,8 @@ module.exports = {
         // 这里将jquery作为自动加载模块，在其他模块内使用$,jQuery则能直接调用
         new webpack.ProvidePlugin({
             $: 'jquery',
-            jQuery: 'jquery'
+            jQuery: 'jquery',
+            _: 'lodash'
         }),
 
         // 提取独立样式表

@@ -1,9 +1,53 @@
 body {
+  margin: 0;
   font-size: 15px;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  background: url(https://t11.baidu.com/it/u=219694606,124836664&fm=59);
+  background: url(https://t11.baidu.com/it/u=219694606,124836664&fm=59) no-repeat;
 }
-div {
+div.abcdefg {
   background: url(/img/timg-1ba3d1b6c8361ad020f844f185ecbcc1.jpg);
+}
+.dialog-overlay {
+  z-index: 9999;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.dialog-overlay .dialog {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  background: #fff;
+}
+.dialog-overlay .dialog-header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding-left: 20px;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(96, 47, 76, 0.95)), to(rgba(35, 51, 65, 0.95)));
+  background-image: -webkit-linear-gradient(left, rgba(96, 47, 76, 0.95), rgba(35, 51, 65, 0.95));
+  background-image: linear-gradient(left, rgba(96, 47, 76, 0.95), rgba(35, 51, 65, 0.95));
+}
+.dialog-overlay .dialog-header .dialog-title {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  color: #fff;
+  font-size: 14px;
+}
+.dialog-overlay .dialog-header .dialog-close {
+  color: #fff;
+  font-size: 20px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.dialog-overlay .dialog-body {
+  padding: 20px;
 }

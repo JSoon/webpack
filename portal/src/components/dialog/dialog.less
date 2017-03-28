@@ -1,0 +1,36 @@
+.dialog-overlay {
+    z-index: 9999;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(0, 0, 0, .5);
+    .dialog {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        background: #fff;
+    }
+    .dialog-header {
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        background-image: linear-gradient(left, rgba(96, 47, 76, .95), rgba(35, 51, 65, .95));
+        .dialog-title {
+            flex: 1;
+            color: #fff;
+            font-size: 14px;
+        }
+        .dialog-close {
+            color: #fff;
+            font-size: 20px;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+    }
+    .dialog-body {
+        padding: 20px;
+    }
+}
