@@ -4,12 +4,11 @@ const concat = require('gulp-concat');
 const cssnano = require('gulp-cssnano');
 const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
-const clean = require('gulp-clean');
+const del = require('del');
 const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
 const size = require('gulp-size'); // 终端中显示构建后静态资源文件大小
 const sequence = require('run-sequence'); // 控制构建任务执行顺序
-const pug = require('gulp-pug'); // 前端模板
 const header = require('gulp-header');
 const package = require('./package.json');
 const banner = ['/**',
@@ -49,10 +48,11 @@ gulp.task('image', imageTask);
 gulp.task('dist', distTask);
 
 function cleanTask() {
-    return gulp.src(paths.dist, {
-            read: false
-        })
-        .pipe(clean());
+    var files = [
+        paths.dist + '/**/*'
+    ];
+
+    return del(files);
 }
 
 function cssTask() {
