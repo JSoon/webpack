@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+.vscode
+ 
+#开发用静态资源
+assets
+
+#发布目录
+dist
