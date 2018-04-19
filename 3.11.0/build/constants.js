@@ -9,8 +9,9 @@ var buildDate = require('./date');
 var PATH_ROOT = path.join(__dirname, '../'); // 项目根路径
 var PATH_SRC = path.join(PATH_ROOT, 'src'); // 项目资源路径
 var PATH_APP = path.join(PATH_SRC, 'app'); // 应用资源路径
-var PATH_COM = path.join(PATH_APP, 'components'); // 组件
+var PATH_COM = path.join(PATH_SRC, 'components'); // 组件
 var PATH_PUBLIC = path.join(PATH_ROOT, 'public', buildDate); // 构建发布路径
+var PATH_LOG = path.join(PATH_ROOT, 'logs'); // 日志
 
 module.exports = {
     PATH_ROOT: PATH_ROOT,
@@ -21,5 +22,6 @@ module.exports = {
     PATH_PUBLIC_JS: path.join(PATH_PUBLIC, 'js'),
     PATH_PUBLIC_CSS: path.join(PATH_PUBLIC, 'css'),
     PATH_PUBLIC_IMG: path.join(PATH_PUBLIC, 'img'),
+    PATH_LOG: PATH_LOG
 
 };

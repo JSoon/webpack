@@ -7,7 +7,8 @@ var logFormat = '[:date[iso]] ":method :url HTTP/:http-version" :status :respons
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
-var accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs/access.log'), {
+var constants = require('./build/constants');
+var accessLogStream = fs.createWriteStream(path.join(constants.PATH_LOG, 'access.log'), {
     flags: 'a' // append模式
 });
 
@@ -21,7 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 // 生产模式下，记录日志
 if (process.env.NODE_ENV === 'production') {
     app.use(logger(logFormat, {
@@ -33,17 +34,18 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
-app.use(sassMiddleware({
-    src: path.join(__dirname, 'public'),
-    dest: path.join(__dirname, 'public'),
-    indentedSyntax: false, // true = .sass and false = .scss
-    // outputStyle: 'compressed', 
-    // sourceMap: true
-}));
+// 使用gulp-sass代替sass中间件
+// app.use(sassMiddleware({
+//     src: constants.PATH_SRC,
+//     dest: constants.PATH_PUBLIC_CSS,
+//     indentedSyntax: false, // true = .sass and false = .scss
+//     // outputStyle: 'compressed', 
+//     // sourceMap: true
+// }));
 
 // 静态资源代理
-app.use(express.static(path.join(__dirname, 'src')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(constants.PATH_SRC));
+app.use(express.static(constants.PATH_PUBLIC));
 
 app.use('/', index);
 app.use('/users', users);
