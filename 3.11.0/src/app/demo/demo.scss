@@ -3,8 +3,22 @@ h1 {
     transform: rotate(-10deg);
 }
 
-h2 {
+.avatar {
+    width: 302px;
+    height: 302px;
     color: brown;
+    background: url(./avatar.png);
+}
+
+.avatar-sm {
+    width: 40px;
+    height: 40px;
+    color: cornflowerblue;
+    background: url(./avatar-sm.png);
+}
+
+h2 {
+    color: darkcyan;
 }
 
 ::placeholder {
