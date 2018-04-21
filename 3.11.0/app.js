@@ -6,7 +6,7 @@ var logger = require('morgan');
 var logFormat = '[:date[iso]] ":method :url HTTP/:http-version" :status :response-time :res[content-length] [:remote-addr :remote-user] ":referrer" ":user-agent"';
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var sassMiddleware = require('node-sass-middleware');
+// var sassMiddleware = require('node-sass-middleware');
 var constants = require('./build/constants');
 var accessLogStream = fs.createWriteStream(path.join(constants.PATH_LOG, 'access.log'), {
     flags: 'a' // append模式

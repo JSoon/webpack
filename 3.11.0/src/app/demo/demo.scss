@@ -8,6 +8,13 @@ h1 {
     height: 302px;
     color: brown;
     background: url(./avatar.png);
+    transition: margin-left 5s;
+}
+
+body:hover {
+    .avatar {
+        margin-left: 500px;
+    }
 }
 
 .avatar-sm {
