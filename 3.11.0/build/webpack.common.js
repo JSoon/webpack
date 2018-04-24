@@ -12,6 +12,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var constants = require('./constants');
+var package = require('../package.json');
 
 module.exports = {
     // 入口模块
@@ -43,14 +44,22 @@ module.exports = {
     // 例如：require('a.css')的时候，直接将CSS变成一段JS，用这段JS将样式插入DOM中
     module: {
         rules: [
-            // es2015 babel
+            // babel巴别塔
             {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                        presets: ['es2015']
+                        presets: [
+                            // 根据名单来编译js语法，以达到不同浏览器环境下的兼容性（与autoprefixer共享同一份名单）
+                            ['env', {
+                                'targets': {
+                                    // The % refers to the global coverage of users from browserslist
+                                    'browsers': package.browserslist
+                                }
+                            }]
+                        ]
                     }
                 }]
             },
@@ -81,7 +90,7 @@ module.exports = {
         externals: {
             // require('jquery')将不会被打包进业务模块
             // 且jQuery将被导出为全局变量
-            "jquery": "jQuery"
+            'jquery': 'jQuery'
         }
     }
     打包结果：
