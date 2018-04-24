@@ -1,5 +1,6 @@
 'use strict';
 
+//#region 依赖注入
 var constants = require('./constants');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
@@ -14,8 +15,10 @@ var plumber = require('gulp-plumber');
 var del = require('del');
 var sequence = require('gulp-sequence');
 var watch = require('gulp-watch');
+var imagemin = require('gulp-imagemin');
+//#endregion
 
-// Scss to CSS
+//#region Scss to CSS
 var sassTask = function () {
     var urlOptions = [
         // 处理行内url
@@ -42,9 +45,15 @@ var sassTask = function () {
     ];
 
     return gulp.src(constants.PATH_APP + '/**/*.scss')
+        // 容错执行
         .pipe(plumber())
         .pipe(sourcemaps.init())
+        // sass to css
         .pipe(sass().on('error', sass.logError))
+        /**
+         * 1. 样式表兼容处理
+         * 2. 图片url处理（重命名导出、base64等等）
+         */
         .pipe(
             postcss([
                 precss,
@@ -52,16 +61,49 @@ var sassTask = function () {
                 url(urlOptions)
             ])
         )
+        // 输出sourcemaps
         .pipe(sourcemaps.write(constants.PATH_PUBLIC_CSS))
+        // 目录找平（/app/demo/demo.css -> /demo.css）
         .pipe(flatten())
+        // 控制台文件大小输出
         .pipe(size({
             showFiles: true,
             showTotal: true
         }))
         .pipe(gulp.dest(constants.PATH_PUBLIC_CSS));
 };
+//#endregion
 
-// 初始化执行任务
+//#region 图片资源优化
+var imageTask = function () {
+    return gulp.src(constants.PATH_PUBLIC_IMG + '/*')
+        // 容错执行
+        .pipe(plumber())
+        .pipe(imagemin([
+            imagemin.gifsicle({
+                interlaced: true
+            }),
+            imagemin.jpegtran({
+                progressive: true
+            }),
+            imagemin.optipng({
+                optimizationLevel: 5
+            }),
+            imagemin.svgo({
+                plugins: [{
+                        removeViewBox: true
+                    },
+                    {
+                        cleanupIDs: false
+                    }
+                ]
+            })
+        ]))
+        .pipe(gulp.dest(constants.PATH_PUBLIC_IMG));
+}
+//#endregion
+
+//#region 初始化执行任务
 var initTask = function () {
     return sequence(
         'sass'
@@ -69,9 +111,11 @@ var initTask = function () {
         if (err) console.log(err)
     });
 };
+//#endregion
 
+//#region 任务注册
 gulp.task('sass', sassTask);
-
+gulp.task('image', imageTask);
 gulp.task('init', initTask);
 
 // 开发模式任务
@@ -85,8 +129,10 @@ gulp.task('development', function () {
 // 产品模式任务（最终资源发布）
 gulp.task('production', function () {
     sequence(
-        'sass'
+        'sass',
+        'image'
     )(function (err) {
         if (err) console.log(err)
     });
 });
+//#endregion
