@@ -31,3 +31,9 @@ h2 {
 ::placeholder {
     color: gray;
 }
+
+.svg-image {
+    width: 24px;
+    height: 24px;
+    background: url(./loading.svg) 0 0 no-repeat transparent;
+}
