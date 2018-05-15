@@ -1,3 +1,10 @@
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+    height: 0;
+}
+
 h1 {
     color: cadetblue;
     transform: rotate(-10deg);
@@ -37,3 +44,103 @@ h2 {
     height: 24px;
     background: url(./loading.svg) 0 0 no-repeat transparent;
 }
+
+// #region 弹性盒子布局
+.first-screen {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    .row-1 {
+        height: 50px;
+        margin-bottom: 5px;
+        background-color: #eee;
+    }
+    .row-2 {
+        height: 50px;
+        margin-bottom: 5px;
+        background-color: #eee;
+    }
+    .row-3 {
+        display: flex;
+        padding: 5px;
+        background-color: #eee;
+        .col-1 {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #ccc;
+            >* {
+                flex: 1;
+                margin: 5px;
+                background-color: #aaa;
+                &::before {
+                    content: "";
+                    float: left;
+                    padding-top: 100%;
+                }
+            }
+        }
+        .col-2 {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            background-color: #ccc;
+            >* {
+                margin: 5px;
+                background-color: #aaa;
+            }
+            .box-1 {
+                flex: 60%;
+            }
+            .box-2 {
+                flex: 40%;
+                display: flex;
+                align-items: stretch;
+                >* {
+                    flex: 1;
+                    background-color: #888;
+                }
+                .box-2-1 {
+                    margin-right: 10px;
+                }
+            }
+        }
+        .col-3 {
+            flex: 1;
+            display: flex;
+            align-items: stretch;
+            background-color: #ccc;
+            >* {
+                flex: 1;
+                margin: 5px;
+                background-color: #aaa;
+            }
+        }
+        .col-4 {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            background-color: #ccc;
+            >* {
+                flex: 1;
+                margin: 5px;
+                background-color: #aaa;
+            }
+            .box-1 {
+                display: flex;
+                align-items: stretch;
+                >* {
+                    flex: 1;
+                    background-color: #888;
+                }
+                .box-1-1 {
+                    margin-right: 10px;
+                }
+            }
+            .box-2 {}
+        }
+    }
+}
+
+// #endregion

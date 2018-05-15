@@ -18,7 +18,8 @@
   "browserslist": [
     "> 5% in CN",
     "Last 2 versions",
-    "ie >= 8"
+    "ie >= 8",
+    "Android >= 2.1"
   ],
   "devDependencies": {
     "autoprefixer": "^8.3.0",

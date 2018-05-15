@@ -9,7 +9,7 @@
             "name": "3.11.0-development",
             "program": "${workspaceFolder}/3.11.0/bin/www",
             "env": {
-                "PORT": "8080",
+                "PORT": "8088",
                 "NODE_ENV": "development"
             }
         },
@@ -19,7 +19,7 @@
             "name": "3.11.0-production",
             "program": "${workspaceFolder}/3.11.0/bin/www",
             "env": {
-                "PORT": "8080",
+                "PORT": "8088",
                 "NODE_ENV": "production"
             }
         }
