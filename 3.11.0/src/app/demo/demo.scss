@@ -45,6 +45,18 @@ h2 {
     background: url(./loading.svg) 0 0 no-repeat transparent;
 }
 
+// #region 自定义字体
+@font-face {
+    font-family: 'MFYueHeiRegular';
+    src: url('../../fonts/MFYueHei_Noncommercial-Regular.otf');
+    src: url('../../fonts/MFYueHei_Noncommercial-Regular.otf') format('opentype');
+}
+
+.custom-font {
+    font-family: 'MFYueHeiRegular';
+}
+
+// #endregion
 // #region 弹性盒子布局
 .first-screen {
     width: 80%;

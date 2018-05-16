@@ -21,7 +21,8 @@ var imagemin = require('gulp-imagemin');
 //#region Scss to CSS
 var sassTask = function () {
     var urlOptions = [
-        // 处理行内url
+        //#region 处理图片
+        // 处理图片url
         {
             filter: /^.*\.(svg|png|jpe?g|gif)$/,
             url: 'inline',
@@ -32,7 +33,7 @@ var sassTask = function () {
             assetsPath: constants.PATH_PUBLIC_IMG,
             useHash: true
         },
-        // 重写样式表中的url路径（自定义）
+        // 重写样式表中的图片url路径（自定义）
         {
             filter: /^.*\.(svg|png|jpe?g|gif)$/,
             url: function (asset) {
@@ -41,7 +42,26 @@ var sassTask = function () {
                 return parsedUrl;
             },
             multi: true
-        }
+        },
+        //#endregion
+        //#region 处理字体
+        // 处理字体url
+        {
+            filter: /^.*\.(eot|woff2|woff|ttf|otf)$/,
+            url: 'copy',
+            assetsPath: constants.PATH_PUBLIC_FONT,
+            useHash: true
+        },
+        // 重写样式表中的字体url路径（自定义）
+        {
+            filter: /^.*\.(eot|woff2|woff|ttf|otf)$/,
+            url: function (asset) {
+                var parsedUrl = asset.url.replace(/.*(\/fonts\/.*)/, '$1');
+                return parsedUrl;
+            },
+            multi: true
+        },
+        //#endregion
     ];
 
     return gulp.src(constants.PATH_APP + '/**/*.scss')

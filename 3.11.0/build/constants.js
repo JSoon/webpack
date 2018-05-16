@@ -22,6 +22,7 @@ module.exports = {
     PATH_PUBLIC_JS: path.join(PATH_PUBLIC, 'js'),
     PATH_PUBLIC_CSS: path.join(PATH_PUBLIC, 'css'),
     PATH_PUBLIC_IMG: path.join(PATH_PUBLIC, 'img'),
+    PATH_PUBLIC_FONT: path.join(PATH_PUBLIC, 'fonts'),
     PATH_LOG: PATH_LOG
 
 };
