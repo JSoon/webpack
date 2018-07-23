@@ -48,8 +48,8 @@ h2 {
 // #region 自定义字体
 @font-face {
     font-family: 'MFYueHeiRegular';
-    src: url('../../fonts/MFYueHei_Noncommercial-Regular.otf');
-    src: url('../../fonts/MFYueHei_Noncommercial-Regular.otf') format('opentype');
+    src: url('./fonts/MFYueHei_Noncommercial-Regular.otf');
+    src: url('./fonts/MFYueHei_Noncommercial-Regular.otf') format('opentype');
 }
 
 .custom-font {
