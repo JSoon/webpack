@@ -8,12 +8,12 @@ var constants = require('./build/constants');
 var app = express();
 
 //#region 日志系统
+// 参考文档：https://www.npmjs.com/package/morgan
 var logger = require('morgan');
 logger.token('localDate', function (req, res) {
     return new Date();
 });
 // 日志格式：系统本地时间 | http请求方法 | 请求地址 | http版本 | 请求状态码 | 响应时间 | 响应资源大小 | 远程服务器IP地址 | 远程用户IP地址 | 请求来源资源 | 用户代理信息
-// 参考文档：https://www.npmjs.com/package/morgan
 var logFormat = '[:localDate] ":method :url HTTP/:http-version" :status :response-time :res[content-length] [:remote-addr :remote-user] ":referrer" ":user-agent"';
 // var sassMiddleware = require('node-sass-middleware');
 var accessLogStream;
